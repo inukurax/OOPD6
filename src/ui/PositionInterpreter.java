@@ -11,12 +11,21 @@ import ui.exception.*;
 public final class PositionInterpreter {
 
   private PositionInterpreter() {
-    // The class should not be instanciated.
+    // The class should not be instantiated.
   }
 
+  /**
+   * 
+   * @param text
+   * @return
+   * @throws InvalidPositionException
+   */
   public static Position interpret(final String text)
       throws InvalidPositionException {
-
+	  
+	if (text == null) 
+		throw new InvalidPositionException();
+	
     int i = 0;
     char c = text.charAt(i);
     if (!isAlpha(c)) {

@@ -41,9 +41,13 @@ public final class ExpressionView
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		String text = jtfExpression.getText();
-	
-		String position = text.substring(0, text.indexOf(" "));
-		String expression = text.substring(text.indexOf(" "));
+		String position = null;
+		String expression = null;
+		int whitespace = text.indexOf(" ");
+		if (whitespace != -1) {
+			position = text.substring(0, whitespace);
+			expression = text.substring(whitespace);
+		}
 		Position pos = null;
 		Expression exp = null;
 		try {
@@ -52,6 +56,7 @@ public final class ExpressionView
 			status.errorStatus("Invalid Position");
 		}
 		try {
+			if (expression != null)
 			exp = ExpressionInterpreter.interpret(new Scanner(expression));
 			
 			}
@@ -62,9 +67,11 @@ public final class ExpressionView
 		catch (InvalidPositionException e2) {
 			status.errorStatus("Invalid Reference Position");
 		}
-		new SetCommand(pos, exp).execute();
-		jtfExpression.setText("");
-	}
+		if (pos != null && exp != null) {
+			new SetCommand(pos, exp).execute();
+			jtfExpression.setText("");
+		}
+		}
 	
 
   	}  
