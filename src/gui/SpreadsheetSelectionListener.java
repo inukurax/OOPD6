@@ -20,7 +20,7 @@ public final class SpreadsheetSelectionListener
 
     java.awt.EventQueue.invokeLater(new Runnable() {
       public void run() {
-        // TODO: reset expression view text.
+        ExpressionView.instance.jtfExpression.setText(null);
       }
     });
 
@@ -45,7 +45,7 @@ public final class SpreadsheetSelectionListener
 
     java.awt.EventQueue.invokeLater(new Runnable() {
       public void run() {
-        // TODO: set expression view text to description.
+      ExpressionView.instance.jtfExpression.setText(description); 
       }
     });
   }

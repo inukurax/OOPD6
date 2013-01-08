@@ -33,5 +33,4 @@ public final class SpreadsheetsView
 	  this.remove(index);
   }
   
-
 }
