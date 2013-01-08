@@ -29,7 +29,7 @@ public final class PositionInterpreter {
       offset *= 10;
       i++;
       c = text.charAt(i);
-    } while (isAlpha(c));
+    } while (isAlpha(c) && (text.length() < i));
 
     if (!isNumeric(c)) {
       throw new InvalidPositionException();

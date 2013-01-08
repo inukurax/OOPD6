@@ -1,6 +1,11 @@
 package gui;
 
+import spreadsheet.exception.NoSuchSpreadsheetException;
 import ui.ExpressionInterpreter;
+import ui.exception.IllegalStartOfExpression;
+import ui.exception.InvalidExpression;
+import ui.exception.InvalidPositionException;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Scanner;
@@ -25,7 +30,15 @@ public final class ExpressionView
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		String str = jtfExpression.getText();
-		Scanner scanner = new Scanner(str);	}
+		Scanner scanner = new Scanner(str);
+		try {
+			ExpressionInterpreter.interpret(scanner);
+			
+		} catch (InvalidPositionException | NoSuchSpreadsheetException
+				| IllegalStartOfExpression | InvalidExpression e1) {
+			StatusView.instance.ErrorStatus("Wrong input");
+		}
+		}
 	  
   }
   
