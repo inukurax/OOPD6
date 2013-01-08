@@ -3,6 +3,7 @@ package gui;
 import ui.ExpressionInterpreter;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Scanner;
 
 import javax.swing.JTextField;
 
@@ -24,7 +25,7 @@ public final class ExpressionView
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		String str = jtfExpression.getText();
-	}
+		Scanner scanner = new Scanner(str);	}
 	  
   }
   
