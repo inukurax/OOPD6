@@ -21,7 +21,6 @@ public final class StatusView
   public static final StatusView instance = new StatusView();
 
   private StatusView() {
-	  errorFont = new Font("Verdana", 1 , 5);
 	  status = "Status: ";
 	  jl = new JLabel(status);
 	  statusLabel = new JLabel();
@@ -38,11 +37,10 @@ public final class StatusView
   
   public void errorStatus(String text) {
 	  statusLabel.setForeground(Color.RED);
-	  this.setStatus(text);
+	  statusLabel.setText(text);
   }
   
   public void clearStatus() {
-	  statusLabel.setForeground(Color.BLACK);
 	  this.setStatus("");
   }
 

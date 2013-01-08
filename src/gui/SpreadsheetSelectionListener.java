@@ -46,6 +46,7 @@ public final class SpreadsheetSelectionListener
     java.awt.EventQueue.invokeLater(new Runnable() {
       public void run() {
       ExpressionView.instance.setExpressionText(description); 
+      StatusView.instance.clearStatus();
       }
     });
   }

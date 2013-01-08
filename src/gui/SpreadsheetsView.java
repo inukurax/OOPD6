@@ -18,20 +18,23 @@ public final class SpreadsheetsView
   private SpreadsheetsView() {
 	  Spreadsheet sheet0 = Application.instance.getWorksheet();
 	  SpreadsheetView pane = new SpreadsheetView(sheet0);
+	  
+	  this.addTab(sheet0.getName(), pane);
 	  this.addChangeListener(new ChangeListener() {
 
-		@Override
-		public void stateChanged(ChangeEvent arg0) {
-			try {
-				Application.instance.changeWorksheet(instance.getCurrentTabName());
-			} catch (NoSuchSpreadsheetException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			@Override
+			public void stateChanged(ChangeEvent arg0) {
+				if (instance.getTabCount() != 0)
+				try {
+					StatusView.instance.clearStatus();
+					Application.instance.changeWorksheet(instance.getCurrentTabName());
+				} catch (NoSuchSpreadsheetException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
-		}
-		  
-	  });
-	  this.addTab(sheet0.getName(), pane);
+			  
+		  });
 	  
   }
   

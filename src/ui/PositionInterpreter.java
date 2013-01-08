@@ -22,9 +22,10 @@ public final class PositionInterpreter {
    */
   public static Position interpret(final String text)
       throws InvalidPositionException {
-	 
-	text.contains("[1-9]");
-
+	  
+	if (text == null) 
+		throw new InvalidPositionException();
+	
     int i = 0;
     char c = text.charAt(i);
     if (!isAlpha(c)) {
