@@ -36,6 +36,7 @@ public final class MenuBar
   private JMenu newSpreadsheetMenu() {
 	    final JMenu menu = new JMenu(Language.instance.regneark());
 	    menu.add(this.newSpreadsheetMenuItem());
+	    menu.add(this.deleteSpreadsheetMenuItem());
 	    return menu;
 	  }
   
