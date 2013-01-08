@@ -14,8 +14,11 @@ final class English extends LanguageSpecification {
     return Language.MenuBar.EXIT;
   }
 
-  public String newspreadsheet() {
+  public String newSpreadsheet() {
 	return Language.MenuBar.NEW_SPREADSHEET;
   }
-
+  
+  public String deleteSpreadsheet() {
+	return Language.MenuBar.DELETE_SPREADSHEET;
+  }
 }
