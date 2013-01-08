@@ -25,7 +25,9 @@ public final class SpreadsheetsView
   
   public String getCurrentTabName() {
       int index = this.getSelectedIndex();
+
 	  return this.getTitleAt(index);
+
   }
   
   public void removeCurrentTab() {
@@ -33,5 +35,4 @@ public final class SpreadsheetsView
 	  this.remove(index);
   }
   
-
 }
