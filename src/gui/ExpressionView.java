@@ -63,7 +63,7 @@ public final class ExpressionView
 			status.errorStatus("Invalid Reference Position");
 		}
 		new SetCommand(pos, exp).execute();
-		
+		jtfExpression.setText("");
 	}
 	
 
