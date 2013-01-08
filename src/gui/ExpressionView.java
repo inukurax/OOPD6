@@ -1,5 +1,9 @@
 package gui;
 
+import ui.ExpressionInterpreter;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JTextField;
 
 public final class ExpressionView
@@ -15,4 +19,13 @@ public final class ExpressionView
   
   JTextField jtfExpression = new JTextField();  
 
+  class ExpressionFieldListener implements ActionListener {
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		String str = jtfExpression.getText();
+	}
+	  
+  }
+  
 }
