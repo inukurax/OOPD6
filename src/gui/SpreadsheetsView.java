@@ -23,9 +23,9 @@ public final class SpreadsheetsView
 	  this.addTab(sheet.getName(), pane);
   }
   
-  public void getCurrentTabName() {
+  public String getCurrentTabName() {
       int index = this.getSelectedIndex();
-	  this.getTitleAt(index);
+	  return this.getTitleAt(index);
   }
   
   public void removeCurrentTab() {

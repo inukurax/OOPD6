@@ -1,17 +1,18 @@
 package gui;
 
-import javax.swing.JLabel;
+import javax.swing.JTextField;
 
 public final class ExpressionView
-    extends JLabel {
+    extends JTextField {
 
   public static final long serialVersionUID = 1L;
 
   public static final ExpressionView instance = new ExpressionView();
 
   private ExpressionView() {
-    super("ExpressionView");
     // This is a singleton.
   }
+  
+  JTextField jtfExpression = new JTextField();  
 
 }
