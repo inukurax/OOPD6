@@ -22,5 +22,16 @@ public final class SpreadsheetsView
 	  SpreadsheetView pane = new SpreadsheetView(sheet);
 	  this.addTab(sheet.getName(), pane);
   }
+  
+  public void getCurrentTabName() {
+      int index = this.getSelectedIndex();
+	  this.getTitleAt(index);
+  }
+  
+  public void removeCurrentTab() {
+      int index = this.getSelectedIndex();
+	  this.remove(index);
+  }
+  
 
 }
