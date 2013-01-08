@@ -6,6 +6,7 @@ import javax.swing.JMenuItem;
 
 import gui.language.Language;
 
+import gui.control.DeleteListener;
 import gui.control.ExitListener;
 import gui.control.NewSpreadsheetListener;
 
