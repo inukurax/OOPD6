@@ -13,11 +13,16 @@ public final class ExpressionView
 
   public static final ExpressionView instance = new ExpressionView();
 
+  private JTextField jtfExpression;  
+
   private ExpressionView() {
-    // This is a singleton.
+	  jtfExpression = this;
   }
   
-  JTextField jtfExpression = new JTextField();  
+  public void setExpressionText(String text) {
+	  this.setText(text);
+  }
+  
 
   class ExpressionFieldListener implements ActionListener {
 
@@ -25,6 +30,7 @@ public final class ExpressionView
 	public void actionPerformed(ActionEvent e) {
 		String str = jtfExpression.getText();
 	}
+	
 	  
   }
   
