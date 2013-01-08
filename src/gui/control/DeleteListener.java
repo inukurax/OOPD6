@@ -1,6 +1,7 @@
 package gui.control;
 
 import gui.SpreadsheetsView;
+import gui.StatusView;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -18,8 +19,13 @@ public final class DeleteListener
 
   public void actionPerformed(ActionEvent event) {
 	SpreadsheetsView tab = SpreadsheetsView.instance;
-    Application.instance.removeSpreadsheet(tab.getCurrentTabName());
-    tab.removeCurrentTab();
+	if (0 != tab.getTabCount()) {
+	    Application.instance.removeSpreadsheet(tab.getCurrentTabName());
+		tab.removeCurrentTab();
+	}
+	else 
+		StatusView.instance.errorStatus("No TABS");
+
   }
 
 }
