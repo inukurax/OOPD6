@@ -23,7 +23,7 @@ public final class DeleteListener
 	    Application.instance.removeSpreadsheet(tab.getCurrentTabName());
 		tab.removeCurrentTab();
 	}
-	else StatusView.instance.setStatus("No TABS");
+	else StatusView.instance.errorStatus("No TABS");
 	
   }
 
