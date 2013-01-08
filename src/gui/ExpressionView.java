@@ -1,7 +1,11 @@
 package gui;
 
+import spreadsheet.Expression;
+import spreadsheet.Position;
 import spreadsheet.exception.NoSuchSpreadsheetException;
+import ui.command.SetCommand;
 import ui.ExpressionInterpreter;
+import ui.PositionInterpreter;
 import ui.exception.IllegalStartOfExpression;
 import ui.exception.InvalidExpression;
 import ui.exception.InvalidPositionException;
@@ -22,7 +26,9 @@ public final class ExpressionView
   private JTextField jtfExpression;  
 
   private ExpressionView() {
+	  this.addActionListener(new ExpressionFieldListener());
 	  jtfExpression = this;
+	  
   }
   
   public void setExpressionText(String text) {
@@ -31,19 +37,35 @@ public final class ExpressionView
   
 
   class ExpressionFieldListener implements ActionListener {
-
+	  	StatusView status = StatusView.instance;
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		String str = jtfExpression.getText();
-		Scanner scanner = new Scanner(str);
+		String text = jtfExpression.getText();
+	
+		String position = text.substring(0, text.indexOf(" "));
+		String expression = text.substring(text.indexOf(" "));
+		Position pos = null;
+		Expression exp = null;
 		try {
-			ExpressionInterpreter.interpret(scanner);
-			
-			} catch (InvalidPositionException | NoSuchSpreadsheetException
-				| IllegalStartOfExpression | InvalidExpression e1) {
-				StatusView.instance.errorStatus("Wrong input");
-			}
+			pos = PositionInterpreter.interpret(position);
+		} catch (InvalidPositionException e3) {
+			status.errorStatus("Invalid Position");
 		}
+		try {
+			exp = ExpressionInterpreter.interpret(new Scanner(expression));
+			
+			}
+		catch (NoSuchSpreadsheetException
+				| IllegalStartOfExpression | InvalidExpression e1) {
+				status.errorStatus("Invalid Expression");
+			}
+		catch (InvalidPositionException e2) {
+			status.errorStatus("Invalid Reference Position");
+		}
+		new SetCommand(pos, exp).execute();
+		
+	}
+	
 
   	}  
 }
