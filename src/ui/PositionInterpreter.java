@@ -11,11 +11,19 @@ import ui.exception.*;
 public final class PositionInterpreter {
 
   private PositionInterpreter() {
-    // The class should not be instanciated.
+    // The class should not be instantiated.
   }
 
+  /**
+   * 
+   * @param text
+   * @return
+   * @throws InvalidPositionException
+   */
   public static Position interpret(final String text)
       throws InvalidPositionException {
+	 
+	text.contains("[1-9]");
 
     int i = 0;
     char c = text.charAt(i);
@@ -29,7 +37,7 @@ public final class PositionInterpreter {
       offset *= 10;
       i++;
       c = text.charAt(i);
-    } while (isAlpha(c));
+    } while (isAlpha(c) && (text.length() < i));
 
     if (!isNumeric(c)) {
       throw new InvalidPositionException();

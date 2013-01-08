@@ -32,6 +32,7 @@ public final class StatusView
   }
   
   public void setStatus(String text) {
+	  statusLabel.setForeground(Color.BLACK);
 	  statusLabel.setText(text);
   }
   

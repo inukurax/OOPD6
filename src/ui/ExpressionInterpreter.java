@@ -30,7 +30,10 @@ public final class ExpressionInterpreter {
     Expression operand, firstOperand, secondOperand;
     switch(keyword) {
       case "Int":
-        return new Int(scanner.nextInt());
+    	  if (scanner.hasNextInt())
+    		  return new Int(scanner.nextInt());
+    	  else 
+    		  throw new InvalidExpression(keyword);
       case "Neg":
         operand = ExpressionInterpreter.interpret(scanner);
         return new Neg(operand);
