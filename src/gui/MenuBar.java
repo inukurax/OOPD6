@@ -40,8 +40,14 @@ public final class MenuBar
 	  }
   
   private JMenuItem newSpreadsheetMenuItem() {
-	  final JMenuItem menuItem = new JMenuItem(Language.instance.newspreadsheet());
+	  final JMenuItem menuItem = new JMenuItem(Language.instance.newSpreadsheet());
 	  menuItem.addActionListener(NewSpreadsheetListener.instance);
+	  return menuItem;
+  }
+  
+  private JMenuItem deleteSpreadsheetMenuItem() {
+	  final JMenuItem menuItem = new JMenuItem(Language.instance.deleteSpreadsheet());
+	  menuItem.addActionListener(DeleteListener.instance);
 	  return menuItem;
   }
 
