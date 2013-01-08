@@ -13,5 +13,9 @@ public final class StatusView
     super("StatusView");
     // This is a singleton.
   }
+  
+  public void setStatus(String status) {
+	  this.setText(status);
+  }
 
 }
