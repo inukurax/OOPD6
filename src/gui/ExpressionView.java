@@ -40,25 +40,26 @@ public final class ExpressionView
 	  	StatusView status = StatusView.instance;
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		status.clearStatus();
 		String text = jtfExpression.getText();
-		String position = null;
-		String expression = null;
+		String position = text;
+		String expression = "";
 		int whitespace = text.indexOf(" ");
 		if (whitespace != -1) {
 			position = text.substring(0, whitespace);
-			expression = text.substring(whitespace);
 		}
+		if (whitespace != -1 && (text.length()-1) != whitespace)
+			expression = text.substring(whitespace);
 		Position pos = null;
 		Expression exp = null;
 		try {
-			pos = PositionInterpreter.interpret(position);
-		} catch (InvalidPositionException e3) {
-			status.errorStatus("Invalid Position");
-		}
+			if (!position.isEmpty())
+				pos = PositionInterpreter.interpret(position); 
 		try {
-			if (expression != null)
+			if (!expression.isEmpty())
 			exp = ExpressionInterpreter.interpret(new Scanner(expression));
-			
+			else if (!position.isEmpty())
+				status.errorStatus("No expression input");
 			}
 		catch (NoSuchSpreadsheetException
 				| IllegalStartOfExpression | InvalidExpression e1) {
@@ -66,6 +67,9 @@ public final class ExpressionView
 			}
 		catch (InvalidPositionException e2) {
 			status.errorStatus("Invalid Reference Position");
+		}
+		} catch (InvalidPositionException e3) {
+			status.errorStatus("Invalid Position");
 		}
 		if (pos != null && exp != null) {
 			new SetCommand(pos, exp).execute();

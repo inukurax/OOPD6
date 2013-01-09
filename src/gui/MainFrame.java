@@ -24,7 +24,7 @@ public final class MainFrame
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     this.setContentPane(new MainPanel());
     this.pack();
-    this.setExtendedState(this.MAXIMIZED_BOTH);  
+//    this.setExtendedState(this.MAXIMIZED_BOTH);  
   }
 
   private class MainPanel

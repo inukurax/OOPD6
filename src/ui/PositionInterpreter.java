@@ -23,12 +23,12 @@ public final class PositionInterpreter {
   public static Position interpret(final String text)
       throws InvalidPositionException {
 	  
-	if (text == null) 
+	if (text == null || text.isEmpty()) 
 		throw new InvalidPositionException();
 	
     int i = 0;
     char c = text.charAt(i);
-    if (!isAlpha(c)) {
+    if (!isAlpha(c) || (text.length() <= 1)) {
       throw new InvalidPositionException();
     }
     int column = 0;

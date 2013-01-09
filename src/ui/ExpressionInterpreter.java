@@ -26,7 +26,11 @@ public final class ExpressionInterpreter {
         NoSuchSpreadsheetException,
         IllegalStartOfExpression,
         InvalidExpression {
-    final String keyword = scanner.next();
+	  final String keyword;
+	  if (scanner.hasNext())
+		  keyword = scanner.next();
+	  else 
+		  keyword = "";
     Expression operand, firstOperand, secondOperand;
     switch(keyword) {
       case "Int":

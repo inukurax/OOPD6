@@ -16,16 +16,17 @@ public final class StatusView
   JLabel statusLabel;
   JLabel jl;
   String status;
-  Font errorFont;
 
   public static final StatusView instance = new StatusView();
 
   private StatusView() {
+	  FlowLayout layout = new FlowLayout();
+	  layout.setAlignment(FlowLayout.LEFT);
 	  status = "Status: ";
 	  jl = new JLabel(status);
 	  statusLabel = new JLabel();
 	  this.setBorder(new BevelBorder(BevelBorder.LOWERED));
-	  this.setLayout(new FlowLayout());
+	  this.setLayout(layout);
 	  this.add(jl);
 	  this.add(statusLabel);
   }
