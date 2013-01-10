@@ -62,11 +62,11 @@ public final class ExpressionView extends JTextField {
 			exp = ExpressionInterpreter.interpret(new Scanner(expression));
 			else if (!position.isEmpty())
 				status.errorStatus("No expression input");
-			}
+		}
 		catch (NoSuchSpreadsheetException
 				| IllegalStartOfExpression | InvalidExpression e1) {
 				status.errorStatus("Invalid Expression");
-			}
+		}
 		catch (InvalidPositionException e2) {
 			status.errorStatus("Invalid Reference Position");
 		}

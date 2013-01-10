@@ -29,13 +29,11 @@ public final class SpreadsheetsView
 					StatusView.instance.clearStatus();
 					Application.instance.changeWorksheet(instance.getCurrentTabName());
 				} catch (NoSuchSpreadsheetException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
+					StatusView.instance.errorStatus("No spreadsheet");
 				}
-			}
-			  
+			}  
 		  });
-	  
   }
   
   public void addNewSpreadsheet(Spreadsheet sheet) {
