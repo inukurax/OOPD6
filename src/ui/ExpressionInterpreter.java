@@ -16,8 +16,10 @@ public final class ExpressionInterpreter {
     // This class should not be instanciated.
   }
 
-  /* Assumes that scanner is not null. Returns null if the command was not
-   * recognised. */
+  /**
+   * Assumes that scanner is not null. 
+   * added hasNext() check
+  **/
   public static Expression interpret(final Scanner scanner)
       throws
         InvalidPositionException,
@@ -59,7 +61,7 @@ public final class ExpressionInterpreter {
         secondOperand = ExpressionInterpreter.interpret(scanner);
         return new Or(firstOperand, secondOperand);
       case "Text":
-        return new Text(scanner.next());
+        return new Text(scanner.nextLine());
       case "Concat":
         firstOperand = ExpressionInterpreter.interpret(scanner);
         secondOperand = ExpressionInterpreter.interpret(scanner);

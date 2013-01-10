@@ -15,7 +15,7 @@ public final class Reference
   }
 
   private Expression getExpression() {
-    final Expression expression = this.spreadsheet.get(this.position);
+    Expression expression = this.spreadsheet.get(this.position);
     if (expression == null) {
       return new Text("");
     }

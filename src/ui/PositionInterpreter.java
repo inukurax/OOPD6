@@ -11,9 +11,9 @@ public final class PositionInterpreter {
   }
 
   /**
-   * 
-   * @param text
-   * @return
+   * fixed so doesnt throw out of bounds on empty Strings.
+   * @param text a position in format A5 for (0,5)
+   * @return a Position
    * @throws InvalidPositionException
    */
   public static Position interpret(final String text)

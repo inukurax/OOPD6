@@ -4,6 +4,7 @@ import javax.swing.event.ListSelectionListener;
 import javax.swing.event.ListSelectionEvent;
 
 import spreadsheet.Application;
+import spreadsheet.CycleException;
 import spreadsheet.Position;
 
 public final class SpreadsheetSelectionListener
@@ -15,9 +16,6 @@ public final class SpreadsheetSelectionListener
     this.view = view;
   }
 
-  /**
-   * Updates the TextField with info of selected cell.
-   */
   public void valueChanged(ListSelectionEvent event) {
 
     java.awt.EventQueue.invokeLater(new Runnable() {
@@ -41,14 +39,12 @@ public final class SpreadsheetSelectionListener
       new Position(selectedColumns[0], selectedRows[0]);
 
     Application.instance.setCurrentPosition(position);
+    final String description = Application.instance.get(position).getDescription();
 
-    final String description =
-      Application.instance.get(position).getDescription();
 
     java.awt.EventQueue.invokeLater(new Runnable() {
       public void run() {
-      ExpressionView.instance.setExpressionText(
-    		  position.getDescription() + " " + description); 
+      ExpressionView.instance.setExpressionText(position.getDescription()+ " " + description); 
       StatusView.instance.clearStatus();
       }
     });
