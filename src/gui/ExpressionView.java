@@ -16,8 +16,7 @@ import java.util.Scanner;
 
 import javax.swing.JTextField;
 
-public final class ExpressionView
-    extends JTextField {
+public final class ExpressionView extends JTextField {
 
   public static final long serialVersionUID = 1L;
 
@@ -27,15 +26,18 @@ public final class ExpressionView
 
   private ExpressionView() {
 	  this.addActionListener(new ExpressionFieldListener());
-	  jtfExpression = this;
-	  
+	  jtfExpression = this;	  
   }
   
   public void setExpressionText(String text) {
 	  this.setText(text);
   }
   
-
+  /**
+   * Listener for the Textfield.
+   * Uses position interpreter and expression interpreter
+   * to add new Expression to the spreadsheet and repaints SpreadsheetsView
+   */
   class ExpressionFieldListener implements ActionListener {
 	  	StatusView status = StatusView.instance;
 	@Override
@@ -73,6 +75,7 @@ public final class ExpressionView
 		}
 		if (pos != null && exp != null) {
 			new SetCommand(pos, exp).execute();
+			SpreadsheetsView.instance.repaint();
 			jtfExpression.setText("");
 		}
 		}
