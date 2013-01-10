@@ -30,7 +30,7 @@ public final class MenuBar
   /**
    * JMenu called "File"
    * @return JMenu with the JMenuItems 
-   * newExitMenuItem()
+   * Uses newExitMenuItem() from below
    */
   private JMenu newFileMenu() {
     final JMenu menu = new JMenu(Language.instance.file());
@@ -41,7 +41,7 @@ public final class MenuBar
   /**
    * JMenu called "Spreadsheet"
    * @return JMenu with the JMenuItems 
-   * newSpreadsheetMenuItem() and deleteSpreadsheetMenuItem()
+   * Uses newSpreadsheetMenuItem() and deleteSpreadsheetMenuItem() from below
    */
   private JMenu newSpreadsheetMenu() {
 	    final JMenu menu = new JMenu(Language.instance.regneark());

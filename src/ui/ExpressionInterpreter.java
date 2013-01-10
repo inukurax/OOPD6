@@ -15,7 +15,8 @@ public final class ExpressionInterpreter {
   public ExpressionInterpreter() {
     // This class should not be instanciated.
   }
-
+  
+  /** We have made minor tweaks to catch more errors */
   /* Assumes that scanner is not null. Returns null if the command was not
    * recognised. */
   public static Expression interpret(final Scanner scanner)

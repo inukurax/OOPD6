@@ -10,12 +10,7 @@ public final class PositionInterpreter {
     // The class should not be instantiated.
   }
 
-  /**
-   * 
-   * @param text
-   * @return
-   * @throws InvalidPositionException
-   */
+  /** We have made minor tweaks to catch more position errors */
   public static Position interpret(final String text)
       throws InvalidPositionException {
 	  
