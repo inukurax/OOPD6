@@ -34,10 +34,11 @@ public final class ExpressionView extends JTextField {
   }
   
   /**
-   * Listener for the Textfield.
+   * ExpressionFieldListener is a listener for the Textfield.
    * Uses position interpreter and expression interpreter
-   * to add new Expression to the spreadsheet and repaints SpreadsheetsView
-   * @throws
+   * to add new Expressions to the spreadsheet and repaints SpreadsheetsView
+   * @throws InvalidExpression, NoSuchSpreadsheetException, IllegalStartOfExpression
+   * 		 InvalidPositionException
    */
   class ExpressionFieldListener implements ActionListener {
 	  	StatusView status = StatusView.instance;

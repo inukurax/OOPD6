@@ -15,7 +15,8 @@ public final class PositionInterpreter {
    * @param text a position in format A5 for (0,5)
    * @return a Position
    * @throws InvalidPositionException
-   */
+  /** We have made minor tweaks to catch more position errors */
+
   public static Position interpret(final String text)
       throws InvalidPositionException {
 	  
