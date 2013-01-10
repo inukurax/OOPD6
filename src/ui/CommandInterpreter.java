@@ -1,7 +1,6 @@
 package ui;
 
 import java.util.Scanner;
-import java.util.InputMismatchException;
 import java.util.NoSuchElementException;
 
 import ui.command.*;

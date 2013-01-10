@@ -9,7 +9,6 @@ import gui.language.Language;
 import gui.control.DeleteListener;
 import gui.control.ExitListener;
 import gui.control.NewSpreadsheetListener;
-import gui.control.DeleteListener;
 
 public final class MenuBar
     extends JMenuBar {

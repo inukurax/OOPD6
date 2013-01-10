@@ -4,7 +4,6 @@ import javax.swing.event.ListSelectionListener;
 import javax.swing.event.ListSelectionEvent;
 
 import spreadsheet.Application;
-import spreadsheet.Expression;
 import spreadsheet.Position;
 
 public final class SpreadsheetSelectionListener

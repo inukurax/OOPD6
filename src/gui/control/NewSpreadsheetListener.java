@@ -7,7 +7,6 @@ import java.awt.event.ActionListener;
 
 import spreadsheet.Application;
 import spreadsheet.Spreadsheet;
-import ui.command.NewSpreadsheetCommand;
 
 	public final class NewSpreadsheetListener implements ActionListener {
 	

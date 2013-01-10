@@ -3,8 +3,6 @@ package gui;
 import java.awt.Dimension;
 
 import javax.swing.JTable;
-import javax.swing.ListSelectionModel;
-import javax.swing.DefaultListSelectionModel;
 
 import spreadsheet.Spreadsheet;
 

@@ -2,8 +2,6 @@ package gui;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JLabel;
-
 import java.awt.BorderLayout;
 
 import gui.language.Language;

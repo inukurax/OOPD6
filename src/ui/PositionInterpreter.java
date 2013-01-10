@@ -1,9 +1,5 @@
 package ui;
 
-import java.util.Scanner;
-import java.util.InputMismatchException;
-import java.util.NoSuchElementException;
-
 import spreadsheet.Position;
 
 import ui.exception.*;

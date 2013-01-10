@@ -1,10 +1,6 @@
 package spreadsheet;
 
-import java.util.Iterator;
-import java.util.NoSuchElementException;
 import spreadsheet.textual.Text;
-
-import spreadsheet.exception.InvalidReference;
 
 public final class Reference
     extends Expression {

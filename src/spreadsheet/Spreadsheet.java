@@ -7,8 +7,6 @@ public final class Spreadsheet {
   private static final String NAME_PREFIX = "Sheet";
   private static int NAME_OFFSET = 0;
 
-  private static int count;
-
   private final HashMap<Position, Expression> map;
   private String name;
   private int maxColumn = 20, maxRow = 20;
