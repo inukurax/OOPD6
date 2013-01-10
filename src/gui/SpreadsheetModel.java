@@ -7,11 +7,14 @@ import spreadsheet.Expression;
 import spreadsheet.Spreadsheet;
 import spreadsheet.Position;
 
+/**
+ * Setup the same TableModel for each tab in SpreadsheetsView
+ */
 final class SpreadsheetModel
     implements TableModel {
 
   private final Spreadsheet spreadsheet;
-
+  
   public SpreadsheetModel(final Spreadsheet spreadsheet) {
     this.spreadsheet = spreadsheet;
   }

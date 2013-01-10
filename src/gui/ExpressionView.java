@@ -37,6 +37,7 @@ public final class ExpressionView extends JTextField {
    * Listener for the Textfield.
    * Uses position interpreter and expression interpreter
    * to add new Expression to the spreadsheet and repaints SpreadsheetsView
+   * @throws
    */
   class ExpressionFieldListener implements ActionListener {
 	  	StatusView status = StatusView.instance;
@@ -63,13 +64,19 @@ public final class ExpressionView extends JTextField {
 			else if (!position.isEmpty())
 				status.errorStatus("No expression input");
 		}
-		catch (NoSuchSpreadsheetException
-				| IllegalStartOfExpression | InvalidExpression e1) {
+		catch (InvalidExpression e1) {
 				status.errorStatus("Invalid Expression");
+		}
+		catch (NoSuchSpreadsheetException e1) {
+			status.errorStatus("NoSuchSpreadsheetException");
+		}
+		catch (IllegalStartOfExpression e1) {
+			status.errorStatus("IllegalStartOfExpression");
 		}
 		catch (InvalidPositionException e2) {
 			status.errorStatus("Invalid Reference Position");
 		}
+		
 		} catch (InvalidPositionException e3) {
 			status.errorStatus("Invalid Position");
 		}
@@ -78,8 +85,6 @@ public final class ExpressionView extends JTextField {
 			SpreadsheetsView.instance.repaint();
 			jtfExpression.setText("");
 		}
-		}
-	
-
-  	}  
+	}
+  }  
 }

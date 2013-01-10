@@ -16,7 +16,9 @@ public final class DeleteListener
   private DeleteListener() {
     // This is a singleton.
   }
-
+  /**
+   * Removes the current tab from Application and from SpreadsheetsView
+   */
   public void actionPerformed(ActionEvent event) {
 	SpreadsheetsView tab = SpreadsheetsView.instance;
 	if (0 != tab.getTabCount()) {
@@ -25,7 +27,5 @@ public final class DeleteListener
 	}
 	else 
 		StatusView.instance.errorStatus("No TABS");
-
   }
-
 }

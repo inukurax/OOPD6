@@ -15,6 +15,9 @@ public final class SpreadsheetSelectionListener
     this.view = view;
   }
 
+  /**
+   * Updates the TextField with info of selected cell.
+   */
   public void valueChanged(ListSelectionEvent event) {
 
     java.awt.EventQueue.invokeLater(new Runnable() {
@@ -44,7 +47,8 @@ public final class SpreadsheetSelectionListener
 
     java.awt.EventQueue.invokeLater(new Runnable() {
       public void run() {
-      ExpressionView.instance.setExpressionText(position.getDescription() + " " + description); 
+      ExpressionView.instance.setExpressionText(
+    		  position.getDescription() + " " + description); 
       StatusView.instance.clearStatus();
       }
     });
