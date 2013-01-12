@@ -1,8 +1,6 @@
 package ui;
 
 import java.util.Scanner;
-import java.util.InputMismatchException;
-import java.util.NoSuchElementException;
 
 import spreadsheet.*;
 import spreadsheet.arithmetic.*;
@@ -18,15 +16,22 @@ public final class ExpressionInterpreter {
     // This class should not be instanciated.
   }
 
+  
+  /** We have made minor tweaks to catch more errors */
   /* Assumes that scanner is not null. Returns null if the command was not
-   * recognised. */
+   * recognised. 
+   */
   public static Expression interpret(final Scanner scanner)
       throws
         InvalidPositionException,
         NoSuchSpreadsheetException,
         IllegalStartOfExpression,
         InvalidExpression {
-    final String keyword = scanner.next();
+	  final String keyword;
+	  if (scanner.hasNext())
+		  keyword = scanner.next();
+	  else 
+		  keyword = "";
     Expression operand, firstOperand, secondOperand;
     switch(keyword) {
       case "Int":
@@ -57,7 +62,7 @@ public final class ExpressionInterpreter {
         secondOperand = ExpressionInterpreter.interpret(scanner);
         return new Or(firstOperand, secondOperand);
       case "Text":
-        return new Text(scanner.next());
+        return new Text(scanner.nextLine());
       case "Concat":
         firstOperand = ExpressionInterpreter.interpret(scanner);
         secondOperand = ExpressionInterpreter.interpret(scanner);

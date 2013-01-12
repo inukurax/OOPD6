@@ -1,10 +1,6 @@
 package spreadsheet;
 
-import java.util.Iterator;
-import java.util.NoSuchElementException;
 import spreadsheet.textual.Text;
-
-import spreadsheet.exception.InvalidReference;
 
 public final class Reference
     extends Expression {
@@ -19,7 +15,7 @@ public final class Reference
   }
 
   private Expression getExpression() {
-    final Expression expression = this.spreadsheet.get(this.position);
+    Expression expression = this.spreadsheet.get(this.position);
     if (expression == null) {
       return new Text("");
     }

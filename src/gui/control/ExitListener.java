@@ -12,7 +12,9 @@ public final class ExitListener
   private ExitListener() {
     // This is a singleton.
   }
-
+  /**
+   * Executes ExitCommand()
+   */
   public void actionPerformed(ActionEvent event) {
     new ExitCommand().execute();
   }

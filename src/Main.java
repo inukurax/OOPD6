@@ -2,7 +2,6 @@ import spreadsheet.*;
 
 import spreadsheet.arithmetic.*;
 import spreadsheet.textual.*;
-import spreadsheet.logical.*;
 
 class Main {
 

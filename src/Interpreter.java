@@ -1,8 +1,6 @@
 import java.io.PrintStream;
 import java.io.InputStream;
 import java.util.Scanner;
-import java.util.InputMismatchException;
-import java.util.NoSuchElementException;
 
 import ui.*;
 

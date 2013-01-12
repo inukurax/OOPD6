@@ -7,7 +7,6 @@ import java.awt.event.ActionListener;
 
 import spreadsheet.Application;
 import spreadsheet.Spreadsheet;
-import ui.command.NewSpreadsheetCommand;
 
 	public final class NewSpreadsheetListener implements ActionListener {
 	
@@ -16,15 +15,12 @@ import ui.command.NewSpreadsheetCommand;
 	private NewSpreadsheetListener() {
 		// Singleton
 	}
-
-	@Override
+	/**
+	 * Adds a new Spreadsheet to Application and a new tab
+	 * to SpreadsheetsView
+	 */
 	public void actionPerformed(ActionEvent arg0) {
 	   Spreadsheet sheet = Application.instance.newSpreadsheet();
-	   SpreadsheetsView.instance.addNewSpreadsheet(sheet);
-
-		
-		
-		
-	}
-	
+	   SpreadsheetsView.instance.addNewSpreadsheet(sheet);	
+	}	
 }

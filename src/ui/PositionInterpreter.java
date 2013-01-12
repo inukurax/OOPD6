@@ -1,9 +1,5 @@
 package ui;
 
-import java.util.Scanner;
-import java.util.InputMismatchException;
-import java.util.NoSuchElementException;
-
 import spreadsheet.Position;
 
 import ui.exception.*;
@@ -15,20 +11,21 @@ public final class PositionInterpreter {
   }
 
   /**
-   * 
-   * @param text
-   * @return
+   * fixed so doesnt throw out of bounds on empty Strings.
+   * @param text a position in format A5 for (0,5)
+   * @return a Position
    * @throws InvalidPositionException
-   */
+  /** We have made minor tweaks to catch more position errors */
+
   public static Position interpret(final String text)
       throws InvalidPositionException {
 	  
-	if (text == null) 
+	if (text == null || text.isEmpty()) 
 		throw new InvalidPositionException();
 	
     int i = 0;
     char c = text.charAt(i);
-    if (!isAlpha(c)) {
+    if (!isAlpha(c) || (text.length() <= 1)) {
       throw new InvalidPositionException();
     }
     int column = 0;

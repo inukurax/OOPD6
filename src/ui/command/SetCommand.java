@@ -3,7 +3,6 @@ package ui.command;
 import spreadsheet.Application;
 import spreadsheet.Position;
 import spreadsheet.Expression;
-import spreadsheet.Spreadsheet;
 
 public final class SetCommand
     extends Command {

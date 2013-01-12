@@ -4,7 +4,7 @@ package gui.language;
  *
  * GUI components should not contain <em>any</em> human-readable strings. All
  * these strings should be in a language file. This class serves as the
- * langauge package front-end. */
+ * language package front-end. */
 public final class Language {
 
   public static final LanguageSpecification instance = new English();

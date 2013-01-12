@@ -16,8 +16,7 @@ import java.util.Scanner;
 
 import javax.swing.JTextField;
 
-public final class ExpressionView
-    extends JTextField {
+public final class ExpressionView extends JTextField {
 
   public static final long serialVersionUID = 1L;
 
@@ -27,54 +26,66 @@ public final class ExpressionView
 
   private ExpressionView() {
 	  this.addActionListener(new ExpressionFieldListener());
-	  jtfExpression = this;
-	  
+	  jtfExpression = this;	  
   }
   
   public void setExpressionText(String text) {
 	  this.setText(text);
   }
   
-
+  /**
+   * ExpressionFieldListener is a listener for the Textfield.
+   * Uses position interpreter and expression interpreter
+   * to add new Expressions to the spreadsheet and repaints SpreadsheetsView
+   * @throws InvalidExpression, NoSuchSpreadsheetException, IllegalStartOfExpression
+   * 		 InvalidPositionException
+   */
   class ExpressionFieldListener implements ActionListener {
 	  	StatusView status = StatusView.instance;
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		status.clearStatus();
 		String text = jtfExpression.getText();
-		String position = null;
-		String expression = null;
+		String position = text;
+		String expression = "";
 		int whitespace = text.indexOf(" ");
 		if (whitespace != -1) {
 			position = text.substring(0, whitespace);
-			expression = text.substring(whitespace);
 		}
+		if (whitespace != -1 && (text.length()-1) != whitespace)
+			expression = text.substring(whitespace);
 		Position pos = null;
 		Expression exp = null;
 		try {
-			pos = PositionInterpreter.interpret(position);
-		} catch (InvalidPositionException e3) {
-			status.errorStatus("Invalid Position");
-		}
+			if (!position.isEmpty())
+				pos = PositionInterpreter.interpret(position); 
 		try {
-			if (expression != null)
+			if (!expression.isEmpty())
 			exp = ExpressionInterpreter.interpret(new Scanner(expression));
-			
-			}
-		catch (NoSuchSpreadsheetException
-				| IllegalStartOfExpression | InvalidExpression e1) {
+			else if (!position.isEmpty())
+				status.errorStatus("No expression input");
+		}
+		catch (InvalidExpression e1) {
 				status.errorStatus("Invalid Expression");
-			}
+		}
+		catch (NoSuchSpreadsheetException e1) {
+			status.errorStatus("NoSuchSpreadsheetException");
+		}
+		catch (IllegalStartOfExpression e1) {
+			status.errorStatus("IllegalStartOfExpression");
+		}
 		catch (InvalidPositionException e2) {
 			status.errorStatus("Invalid Reference Position");
 		}
-		if (pos != null && exp != null)
+		
+		} catch (InvalidPositionException e3) {
+			status.errorStatus("Invalid Position");
+		}
+		if (pos != null && exp != null) {
 			new SetCommand(pos, exp).execute();
-		
-
-		
+			SpreadsheetsView.instance.repaint();
+			jtfExpression.setText("");
+		}
 	}
-	
-
-  	}  
+  }  
 }

@@ -1,7 +1,5 @@
 package ui.command;
 
-import spreadsheet.Application;
-
 import ui.StreamView;
 
 public final class InvalidExpressionCommand
