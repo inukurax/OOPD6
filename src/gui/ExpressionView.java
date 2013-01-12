@@ -40,6 +40,7 @@ public final class ExpressionView
 	  	StatusView status = StatusView.instance;
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		status.clearStatus();
 		String text = jtfExpression.getText();
 		String position = null;
 		String expression = null;
