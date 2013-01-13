@@ -12,13 +12,15 @@ public final class SpreadsheetSelectionListener
 
   private final SpreadsheetView view;
   private static Position position = null;
-
   public SpreadsheetSelectionListener(final SpreadsheetView view) {
     this.view = view;
   }
-
+  
+  /**
+   * Updates the TextField with info of selected cell.
+   */
   public void valueChanged(ListSelectionEvent event) {
-
+	
     java.awt.EventQueue.invokeLater(new Runnable() {
       public void run() {
         ExpressionView.instance.setExpressionText("");
@@ -50,7 +52,7 @@ public final class SpreadsheetSelectionListener
     	else
     		ExpressionView.instance.setExpressionText("");
       StatusView.instance.clearStatus();
-      }
+      	}
     });
   }
 

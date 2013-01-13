@@ -21,11 +21,11 @@ public final class ExpressionView extends JTextField {
 
   public static final ExpressionView instance = new ExpressionView();
 
-  private JTextField jtfExpression;  
-
+  private JTextField jtfExpression;
+  
   private ExpressionView() {
 	  this.addActionListener(new ExpressionFieldListener());
-	  jtfExpression = this;	  
+	  jtfExpression = this;
   }
   
   public void setExpressionText(String text) {
