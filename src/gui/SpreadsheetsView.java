@@ -28,6 +28,7 @@ public final class SpreadsheetsView
 			 * when a new tab is clicked.
 			 */
 			public void stateChanged(ChangeEvent arg0) {
+				SpreadsheetSelectionListener.setPosition(null);
 				if (instance.getTabCount() != 0)
 				try {
 					StatusView.instance.clearStatus();

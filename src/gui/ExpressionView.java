@@ -5,7 +5,6 @@ import spreadsheet.Position;
 import spreadsheet.exception.NoSuchSpreadsheetException;
 import ui.command.SetCommand;
 import ui.ExpressionInterpreter;
-import ui.PositionInterpreter;
 import ui.exception.IllegalStartOfExpression;
 import ui.exception.InvalidExpression;
 import ui.exception.InvalidPositionException;
@@ -45,24 +44,14 @@ public final class ExpressionView extends JTextField {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		status.clearStatus();
-		String text = jtfExpression.getText();
-		String position = text;
-		String expression = "";
-		int whitespace = text.indexOf(" ");
-		if (whitespace != -1) {
-			position = text.substring(0, whitespace);
-		}
-		if (whitespace != -1 && (text.length()-1) != whitespace)
-			expression = text.substring(whitespace);
-		Position pos = null;
+		String expression = jtfExpression.getText();
+	
+		Position pos = SpreadsheetSelectionListener.getPosition();
 		Expression exp = null;
 		try {
-			if (!position.isEmpty())
-				pos = PositionInterpreter.interpret(position); 
-		try {
 			if (!expression.isEmpty())
-			exp = ExpressionInterpreter.interpret(new Scanner(expression));
-			else if (!position.isEmpty())
+				exp = ExpressionInterpreter.interpret(new Scanner(expression));
+			else 
 				status.errorStatus("No expression input");
 		}
 		catch (InvalidExpression e1) {
@@ -78,14 +67,13 @@ public final class ExpressionView extends JTextField {
 			status.errorStatus("Invalid Reference Position");
 		}
 		
-		} catch (InvalidPositionException e3) {
-			status.errorStatus("Invalid Position");
-		}
 		if (pos != null && exp != null) {
 			new SetCommand(pos, exp).execute();
 			SpreadsheetsView.instance.repaint();
 			jtfExpression.setText("");
 		}
+		else if (pos == null)
+			status.errorStatus("No position");
 	}
   }  
 }
