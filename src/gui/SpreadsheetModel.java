@@ -44,7 +44,7 @@ final class SpreadsheetModel
   }
 
   public boolean isCellEditable(int rowIndex, int columnIndex) {
-    return false;
+    return true;
   }
 
   public void removeTableModelListener(TableModelListener listener) {

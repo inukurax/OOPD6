@@ -62,7 +62,10 @@ public final class ExpressionInterpreter {
         secondOperand = ExpressionInterpreter.interpret(scanner);
         return new Or(firstOperand, secondOperand);
       case "Text":
-        return new Text(scanner.nextLine());
+    	  if (scanner.hasNext())
+    	  	return new Text(scanner.nextLine());
+    	  else 
+    		  throw new InvalidExpression(keyword);
       case "Concat":
         firstOperand = ExpressionInterpreter.interpret(scanner);
         secondOperand = ExpressionInterpreter.interpret(scanner);

@@ -11,13 +11,16 @@ public final class SpreadsheetSelectionListener
     implements ListSelectionListener {
 
   private final SpreadsheetView view;
-
+  private static Position position = null;
   public SpreadsheetSelectionListener(final SpreadsheetView view) {
     this.view = view;
   }
-
+  
+  /**
+   * Updates the TextField with info of selected cell.
+   */
   public void valueChanged(ListSelectionEvent event) {
-
+	
     java.awt.EventQueue.invokeLater(new Runnable() {
       public void run() {
         ExpressionView.instance.setExpressionText("");
@@ -35,24 +38,30 @@ public final class SpreadsheetSelectionListener
       return;
     }
 
-    final Position position =
-      new Position(selectedColumns[0], selectedRows[0]);
+    this.setPosition(new Position(selectedColumns[0], selectedRows[0]));
 
-    Application.instance.setCurrentPosition(position);
-    final Expression exp = Application.instance.get(position);
+    Application.instance.setCurrentPosition(getPosition());
+    final Expression exp = Application.instance.get(getPosition());
     final String description = exp.getDescription();
 
 
     java.awt.EventQueue.invokeLater(new Runnable() {
       public void run() {
     	if  (!description.equals("Text \"\""))
-    		ExpressionView.instance.setExpressionText(position.getDescription() 
-    				+ " " + description); 
+    		ExpressionView.instance.setExpressionText(description); 
     	else
-    		ExpressionView.instance.setExpressionText(position.getDescription());
+    		ExpressionView.instance.setExpressionText("");
       StatusView.instance.clearStatus();
-      }
+      	}
     });
   }
+
+	public static Position getPosition() {
+		return position;
+	}
+	
+	public static void setPosition(Position position) {
+		SpreadsheetSelectionListener.position = position;
+	}
 
 }

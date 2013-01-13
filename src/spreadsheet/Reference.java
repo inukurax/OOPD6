@@ -31,7 +31,7 @@ public final class Reference
   }
 
   public String toString() {
-	  return this.getExpression().toString();
+	return this.getExpression().toString();
   }
 
   public void checkAcyclic(final Path path)
