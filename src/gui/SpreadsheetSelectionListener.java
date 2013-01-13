@@ -4,6 +4,8 @@ import javax.swing.event.ListSelectionListener;
 import javax.swing.event.ListSelectionEvent;
 
 import spreadsheet.Application;
+import spreadsheet.CycleException;
+import spreadsheet.Expression;
 import spreadsheet.Position;
 
 public final class SpreadsheetSelectionListener
@@ -42,18 +44,19 @@ public final class SpreadsheetSelectionListener
       new Position(selectedColumns[0], selectedRows[0]);
 
     Application.instance.setCurrentPosition(position);
+    final Expression exp = Application.instance.get(position);
+    final String description = exp.getDescription();
 
-    final String description =
-      Application.instance.get(position).getDescription();
 
     java.awt.EventQueue.invokeLater(new Runnable() {
       public void run() {
-      ExpressionView.instance.setExpressionText(
-    		  position.getDescription() + " " + description);
+    	if  (!description.equals("Text \"\""))
+    		ExpressionView.instance.setExpressionText(position.getDescription() 
+    				+ " " + description); 
+    	else
+    		ExpressionView.instance.setExpressionText(position.getDescription());
       StatusView.instance.clearStatus();
-      
-      
-      }
+      	}
     });
   }
 

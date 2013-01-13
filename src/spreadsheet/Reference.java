@@ -15,7 +15,7 @@ public final class Reference
   }
 
   private Expression getExpression() {
-    final Expression expression = this.spreadsheet.get(this.position);
+    Expression expression = this.spreadsheet.get(this.position);
     if (expression == null) {
       return new Text("");
     }
@@ -31,7 +31,7 @@ public final class Reference
   }
 
   public String toString() {
-	  return this.getExpression().toString();
+	return this.getExpression().toString();
   }
 
   public void checkAcyclic(final Path path)

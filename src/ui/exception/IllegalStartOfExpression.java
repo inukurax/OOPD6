@@ -8,6 +8,8 @@ public final class IllegalStartOfExpression
   public IllegalStartOfExpression(final String keyword) {
     super(String.format(
       "Illegal start of expression \"%s\".", keyword));
+    this.getLocalizedMessage();
+    
   }
 
 }

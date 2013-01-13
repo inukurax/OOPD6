@@ -10,7 +10,13 @@ public final class PositionInterpreter {
     // The class should not be instantiated.
   }
 
+  /**
+   * fixed so doesnt throw out of bounds on empty Strings.
+   * @param text a position in format A5 for (0,5)
+   * @return a Position
+   * @throws InvalidPositionException
   /** We have made minor tweaks to catch more position errors */
+
   public static Position interpret(final String text)
       throws InvalidPositionException {
 	  
