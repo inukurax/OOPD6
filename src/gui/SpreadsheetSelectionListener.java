@@ -38,7 +38,7 @@ public final class SpreadsheetSelectionListener
       return;
     }
 
-    this.setPosition(new Position(selectedColumns[0], selectedRows[0]));
+    setPosition(new Position(selectedColumns[0], selectedRows[0]));
 
     Application.instance.setCurrentPosition(getPosition());
     final Expression exp = Application.instance.get(getPosition());

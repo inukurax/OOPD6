@@ -5,6 +5,8 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import spreadsheet.Application;
+import spreadsheet.Expression;
+import spreadsheet.Position;
 import spreadsheet.Spreadsheet;
 import spreadsheet.exception.NoSuchSpreadsheetException;
 
@@ -27,17 +29,22 @@ public final class SpreadsheetsView
 			 * Changes worksheet in Application to match current tab 
 			 * when a new tab is clicked.
 			 */
-			public void stateChanged(ChangeEvent arg0) {
-				SpreadsheetSelectionListener.setPosition(null);
-				if (instance.getTabCount() != 0)
+		public void stateChanged(ChangeEvent arg0) {
+			//SpreadsheetSelectionListener.setPosition(null);
+			if (instance.getTabCount() != 0)
 				try {
-					StatusView.instance.clearStatus();
-					Application.instance.changeWorksheet(instance.getCurrentTabName());
-				} catch (NoSuchSpreadsheetException e) {
-					StatusView.instance.errorStatus("No such Spreadsheet");
-				}
-			}  
-		  });
+				StatusView.instance.clearStatus();
+				Application.instance.changeWorksheet(instance.getCurrentTabName());
+				final Position pos = SpreadsheetSelectionListener.getPosition();
+				final Expression exp = Application.instance.get(pos);
+				if (pos != null)
+					ExpressionView.instance.setExpressionText(
+							exp.getDescription().replace("Text \"\"", ""));
+			} catch (NoSuchSpreadsheetException e) {
+				StatusView.instance.errorStatus("No such Spreadsheet");
+			}
+		}  
+	  });
   }
   /**
    * Adds a new tab as SpreadsheetView(Spreadsheet)
